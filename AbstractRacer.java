@@ -19,8 +19,9 @@ public abstract class AbstractRacer
     {
         this.name = name;
         position = 0;
-        tracklength = 5;
+        tracklength = 40;
     }
+    public abstract String getType();
     public String getName()
     {
         return name;
@@ -33,19 +34,19 @@ public abstract class AbstractRacer
     /**
     * Overrides the toString method
     */
-    public String toString()
+    public String toString() 
     {
-        String current = "Start:";
-        for(int i = 0; i < tracklength - position; i++)
+        String track = getName() + " | ";
+        for (int i = 0; i < getPosition(); i++) 
         {
-            System.out.print(" ");
+            track += " ";
         }
-        System.out.print("R");
-        for(int i = position; i < tracklength; i++)
+        if (getPosition() >= getTrackLength()) 
         {
-            System.out.print(" ");
+            track += "|";
         }
-        return current;
+        track += getType();
+        return track;
     }
     /**
     * The getPosition() method returns the current position
@@ -73,6 +74,5 @@ public abstract class AbstractRacer
     }
 
     
-    // to be completed
 
 }

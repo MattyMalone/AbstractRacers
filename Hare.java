@@ -5,44 +5,41 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Hare extends AbstractRacer
+public class Hare extends AbstractRacer 
 {
     private int energy;
 
-  
     public Hare(String name, int energy) 
     {
         super(name);
         this.energy = energy;
     }
+
     public void move() 
     {
         if (energy > 0) 
         {
-            setPosition(getPosition() + ((int)Math.random() * 3));
-            energy -= 2; 
+            setPosition(getPosition() + ((int)(Math.random() * 3) + 1));
+            energy -= 2;
         } 
         else 
         {
-            energy += 1; 
+            energy += 1;
         }
     }
-
-    /**
-    * Overrides the toString method
-    */
-    public String toString()
+    public String getType() 
     {
-        String current = "Start:";
-        for(int i = 0; i < getTrackLength() - getPosition(); i++)
+        return "H";
+    }   
+    public String toString() 
+    {
+        String track = getName() + " | ";
+        for (int i = 0; i < getPosition(); i++) 
         {
-            System.out.print(" ");
+            track += " ";
         }
-        System.out.print("H");
-        for(int i = getPosition(); i < getTrackLength(); i++)
-        {
-            System.out.print(" ");
-        }
-        return current;
+        track += "H";
+        return track;
     }
 }
+

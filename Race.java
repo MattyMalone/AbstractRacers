@@ -17,18 +17,31 @@ public class Race
         this.distance = 40;
     }
     
-    public void update()
+    public static void clearScreen() 
     {
-        for(AbstractRacer john : Racers)
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();
+    }
+    public void update() 
+    {
+        clearScreen();
+        for (AbstractRacer john : Racers) 
         {
             john.move();
         }
-        for(AbstractRacer john : Racers)
+        for (AbstractRacer john : Racers) 
         {
-            System.out.printf("%s |", john.getName());
-            john.toString();
-            System.out.println();
+            System.out.println(john);
         }
+        printFinishLine();
+    }
+    public void printFinishLine() 
+    {
+        for (int i = 0; i < getDistance(); i++) 
+        {
+            System.out.print("-");
+        }
+        System.out.println("|");
     }
     public int getDistance()
     {
