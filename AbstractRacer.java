@@ -19,7 +19,11 @@ public abstract class AbstractRacer
     {
         this.name = name;
         position = 0;
-        tracklength = 14;
+        tracklength = 5;
+    }
+    public String getName()
+    {
+        return name;
     }
     /**
     * The abstract method move() must be defined by
@@ -63,7 +67,11 @@ public abstract class AbstractRacer
     {
         this.position = position;
     }
-   
+    public int getTrackLength()
+    {
+        return tracklength;
+    }
+
     
     // to be completed
 
