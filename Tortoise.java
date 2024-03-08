@@ -5,30 +5,29 @@
  * @author (Alex Chui)
  * @version (2024/3/4)
  */
-public class Tortoise extends AbstractRacer
+public class Tortoise extends AbstractRacer 
 {
-    public Tortoise(String name)
+    public Tortoise(String name) 
     {
         super(name);
     }
-    
-    public void move()
+
+    public void move() 
     {
         setPosition(getPosition() + 1);
     }
-    
-    public String toString()
+    public String getType() 
     {
-        String current = "Start:";
-        for(int i = 0; i < getTrackLength() - getPosition(); i++)
+        return "T";
+    }   
+    public String toString() 
+    {
+        String track = getName() + " | ";
+        for (int i = 0; i < getPosition(); i++) 
         {
-            System.out.print(" ");
+            track += " ";
         }
-        System.out.print("T");
-        for(int i = getPosition(); i < getTrackLength(); i++)
-        {
-            System.out.print(" ");
-        }
-        return current;
+        track += "T";
+        return track;
     }
 }

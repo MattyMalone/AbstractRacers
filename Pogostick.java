@@ -13,6 +13,11 @@ public class Pogostick extends AbstractRacer
         super(name);
     }
     
+    
+    public String getType()
+    {
+        return "P";
+    }
     public void move()
     {
         int bounce = ((int) Math.random() * 10);
@@ -36,17 +41,13 @@ public class Pogostick extends AbstractRacer
     
     public String toString()
     {
-        String current = "Start:";
-        for(int i = 0; i < getTrackLength() - getPosition(); i++)
+        String track = getName() + " | ";
+        for (int i = 0; i < getPosition(); i++) 
         {
-            System.out.print(" ");
+            track += " ";
         }
-        System.out.print("P");
-        for(int i = getPosition(); i < getTrackLength(); i++)
-        {
-            System.out.print(" ");
-        }
-        return current;
+        track += "P";
+        return track;
     }
 }
 
