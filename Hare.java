@@ -2,14 +2,15 @@
 /**
  * Write a description of class Hare here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Alex Chui)
+ * @version (2024/3/12)
  */
 public class Hare extends AbstractRacer 
 {
     private int energy;
+    
 
-    public Hare(String name, int energy) 
+    public Hare(String name) 
     {
         super(name);
         this.energy = energy;
@@ -27,18 +28,5 @@ public class Hare extends AbstractRacer
             energy += 1;
         }
     }
-    public String getType() 
-    {
-        return "H";
-    }   
-    public String toString() 
-    {
-        String track = getName() + " | ";
-        for (int i = 0; i < getPosition(); i++) 
-        {
-            track += " ";
-        }
-        track += "H";
-        return track;
-    }
+    
 }

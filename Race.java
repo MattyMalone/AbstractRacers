@@ -5,79 +5,54 @@
  * @author (Alex Chui)
  * @version (2024/3/7)
  */
- 
+
+
+
 import java.util.ArrayList;
 public class Race
 {
-    ArrayList<AbstractRacer> Racers; 
+    private boolean finished;
+    private ArrayList<AbstractRacer> Racers; 
     private int distance;
-    public Race(ArrayList<AbstractRacer> Racers)
+    public Race(int distance)
     {
         this.Racers = new ArrayList<AbstractRacer>();
-        this.Racers = Racers;
-        this.distance = 40;
+        this.distance = distance;
+        this.finished = false;
     }
     
-    public static void clearScreen() 
+    public void addRacer(AbstractRacer r)
     {
-        System.out.print("\033[H\033[2J");  
-        System.out.flush();
+        Racers.add(r);
     }
-    public void update() 
+    
+    public ArrayList<AbstractRacer> getAllRacers()
     {
-        clearScreen();
-        for (AbstractRacer john : Racers) 
-        {
-            john.move();
-        }
-        for (AbstractRacer john : Racers) 
-        {
-            System.out.println(john);
-        }
-        printFinishLine();
+        return Racers;
     }
-    public void printFinishLine() 
+    
+    public ArrayList<AbstractRacer> update()
     {
-        for (int i = 0; i < getDistance(); i++) 
+        ArrayList<AbstractRacer> winners = new ArrayList<AbstractRacer>();
+        for (AbstractRacer r : Racers)
         {
-            System.out.print("-");
+            r.move();
+            if (r.getPosition() >= distance)
+            {
+                winners.add(r);
+            }
         }
-        System.out.println("|");
+        return winners;
     }
+    
     public int getDistance()
     {
         return distance;
     }
-    public void addRacer(AbstractRacer racer)
+    
+    public boolean isFinished()
     {
-        Racers.add(racer);
-    }
-    public ArrayList<AbstractRacer> getRacers()
-    {
-        return Racers;
-    }
-    public boolean raceOver()
-    {
-        for(AbstractRacer john : Racers)
-        {
-            if(john.getPosition() >= distance)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    public ArrayList<AbstractRacer> getWinner()
-    {
-        ArrayList<AbstractRacer> johnson = new ArrayList<AbstractRacer>();
-        for(int i = 0; i < Racers.size(); i++)
-        {
-            if(Racers.get(i).getPosition() >= distance)
-            {
-                johnson.add(Racers.get(i));
-            }
-        }
-        return johnson;
+        return finished;
     }
 }
 

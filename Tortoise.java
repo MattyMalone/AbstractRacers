@@ -16,18 +16,5 @@ public class Tortoise extends AbstractRacer
     {
         setPosition(getPosition() + 1);
     }
-    public String getType() 
-    {
-        return "T";
-    }   
-    public String toString() 
-    {
-        String track = getName() + " | ";
-        for (int i = 0; i < getPosition(); i++) 
-        {
-            track += " ";
-        }
-        track += "T";
-        return track;
-    }
+    
 }
